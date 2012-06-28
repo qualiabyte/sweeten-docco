@@ -1,7 +1,5 @@
 assert  = require 'assert'
 {exec}  = require 'child_process'
-fs      = require 'fs'
-path    = require 'path'
 
 tests = []
 test = (name, fn) -> tests.push [name, fn]
@@ -37,8 +35,8 @@ test 'JSDoc', ->
         assert.ok stdout.match /<b>param<\/b>/
         assert.ok stdout.match /<i>Water<\/i>/
         assert.ok stdout.match /<div class="doc-tag"><b>api<\/b> public<\/div>/
-        assert.ok stdout.match /<div class="doc-tag"><b>param<\/b> <i>Water<\/i> <code>water<\/code> The water in the ocean.<\/div>/
-        assert.ok stdout.match /<div class="doc-tag"><b>return<\/b> <i>Ocean<\/i> for chaining/
+        assert.ok stdout.match /<div class="doc-tag"><b>param<\/b> <code>water<\/code> <i>Water<\/i> The water in the ocean.<\/div>/
+        assert.ok stdout.match /<div class="doc-tag"><b>return<\/b> <i>Ocean<\/i> For chaining./
 
 # Let's do this!
 runTests()
