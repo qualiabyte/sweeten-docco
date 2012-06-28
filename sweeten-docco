@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# sweeten-docco.sh
+# Sweeten docco output with syntax highlighted JSDoc and Codo tags.
+
+if [[ -e 'docs' ]]; then
+  cd docs
+
+  echo -n "Sweetening docco... "
+
+  # Tag lists for JSDoc & Codo
+  jsdocTags='author constructor deprecated exception param private return see this throws version'
+  codoTags='abstract author concern copyright deprecated example extend include note method mixin option overload param private return see since todo version'
+
+  # More tags...
+  extendedTags='api'
+
+  # Build a combined list, and regex to match any tag
+  allTags=$( echo $extendedTags $codoTags $jsdocTags | uniq )
+  anyTag=$( echo $allTags | sed 's/ /|/g' )
+
+  # Wrap each doc tag statement
+  sed -i -r 's/(@('$anyTag')[^<]*)/<div class="doc-tag"> \1 <\/div>/' *.html
+
+  # Wrap param names with <code>; param types with <i> (listing names first)
+  # and tag names in <b> (after removing the '@').
+  sed -i -r 's/(@param)\s+(\[.+\])\s+((,\s+|\S)+)/\1 <code>\3<\/code> \2/' *.html
+  sed -i -r 's/(@param|@return)([^\[]+)\[(.+)\]/\1\2 <i>\3<\/i>/' *.html
+  sed -i -r 's/@('$anyTag')/<b>\1<\/b>/' *.html
+
+  # Append doc-tag style to docco's css
+  echo '.doc-tag { color: #777; }' >> docco.css
+  echo '.doc-tag * { color: #222; }' >> docco.css
+
+  echo "Done."
+else
+  echo "Directory 'docs' not found."
+fi

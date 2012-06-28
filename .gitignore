@@ -1,0 +1,8 @@
+# Node Modules
+node_modules
+
+# Vim Swapfiles
+*.swp
+
+# Backups
+*~
