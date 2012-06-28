@@ -20,12 +20,17 @@ if [[ -e 'docs' ]]; then
   anyTag=$( echo $allTags | sed 's/ /|/g' )
 
   # Wrap each doc tag statement
-  sed -i -r 's/(@('$anyTag')[^<]*)/<div class="doc-tag"> \1 <\/div>/' *.html
+  sed -i -r 's/(@('$anyTag')[^<]*)/<div class="doc-tag">\1<\/div>/' *.html
+
+  # Param pattern helpers
+  paramTypeBegin='[[{]'
+  paramTypeEnd='[]}]'
+  paramNameTokens='(,\s+|\S)+'
 
   # Wrap param names with <code>; param types with <i> (listing names first)
   # and tag names in <b> (after removing the '@').
-  sed -i -r 's/(@param)\s+(\[.+\])\s+((,\s+|\S)+)/\1 <code>\3<\/code> \2/' *.html
-  sed -i -r 's/(@param|@return)([^\[]+)\[(.+)\]/\1\2 <i>\3<\/i>/' *.html
+  sed -i -r 's/(@param)\s+('$paramTypeBegin'.+'$paramTypeEnd')\s+('$paramNameTokens')/\1 <code>\3<\/code> \2/' *.html
+  sed -i -r 's/(@param|@return)\s+([^[{ ]*\s*)'$paramTypeBegin'(.+)'$paramTypeEnd'/\1 \2<i>\3<\/i>/' *.html
   sed -i -r 's/@('$anyTag')/<b>\1<\/b>/' *.html
 
   # Append doc-tag style to docco's css
