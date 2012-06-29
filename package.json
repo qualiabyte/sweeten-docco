@@ -1,6 +1,6 @@
 {
   "name": "sweeten-docco",
-  "description": "Sweeten docco ouput with syntax highlighted doc tags.",
+  "description": "Sweeten docco output with syntax highlighted JSDoc & Codo tags.",
   "version": "0.0.1",
   "author": "Tyler Florez <qualiabyte@gmail.com>",
   "dependencies": {},
@@ -10,7 +10,7 @@
   },
   "keywords": [
     "docco", "jsdoc", "codo",
-    "coffee-script", "doc", "tags"
+    "coffeescript", "docs", "tags"
   ],
   "license": "MIT",
   "engine": "node >= 0.6"
