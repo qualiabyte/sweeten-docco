@@ -5,20 +5,36 @@ tests = []
 test = (name, fn) -> tests.push [name, fn]
 
 runTests = () ->
-  i = 0
+  i = 1
+  failures = []
+
   for test in tests
     name = test[0]
     fn = test[1]
     err = null
     try
-      process.stdout.write "Test #{i}: #{name} "
+      process.stdout.write "Test #{i}: #{name}, "
       fn()
     catch err
       console.log "Failed: ", err
+      failures.push test
     finally
       if not err
         console.log "Complete"
     i++
+
+  if failures.length
+    console.log "Failed #{failures.length} of #{tests.length} total tests."
+    process.exit 1
+  else
+    console.log "All tests passed! (#{tests.length} total)"
+    process.exit 0
+
+test 'Sanity Check', ->
+  assert.ok 1 + 1 == 2
+
+#test 'Should Fail', ->
+#  assert.ok false
 
 test 'JSDoc', ->
   exec "./node_modules/docco/bin/docco test/fixtures/ocean.jsdoc.coffee", (err, stdout, stderr) ->
