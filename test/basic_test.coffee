@@ -21,14 +21,14 @@ runTests = () ->
     i++
 
 test 'JSDoc', ->
-  exec "./node_modules/docco/bin/docco test/fixtures/jsdoc.coffee", (err, stdout, stderr) ->
+  exec "./node_modules/docco/bin/docco test/fixtures/ocean.jsdoc.coffee", (err, stdout, stderr) ->
     assert.equal err, null, "docco should run successfully"
 
     exec "./sweeten-docco", (err, stdout, stderr) ->
       assert.equal err, null, "sweeten-docco should run successfully"
       assert.equal stdout, "Sweetening docco... Done.\n"
 
-      exec "cat docs/jsdoc.html", (err, stdout, stderr) ->
+      exec "cat docs/ocean.jsdoc.html", (err, stdout, stderr) ->
         assert.equal err, null, "cat should run successfully"
         assert.ok stdout.match /<b>api<\/b>/
         assert.ok stdout.match /<b>return<\/b>/
