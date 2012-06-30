@@ -28,7 +28,7 @@ for the above sample, also used by our test suite.
 Just add sweeten-docco to your project. With curl:
 
 <pre>
-  $ curl https://github.com/qualiabyte/sweeten-docco/sweeten-docco > bin/sweeten-docco
+  $ curl https://github.com/qualiabyte/sweeten-docco/raw/master/sweeten-docco > bin/sweeten-docco
 </pre>
 
 Or npm:
@@ -49,6 +49,6 @@ Or npm:
 2\. Run sweeten-docco from your project directory:
 
 <pre>
-  $ ./bin/sweeten-docco
+  $ ./node_modules/.bin/sweeten-docco
   Sweetening docco... Done.
 </pre>
