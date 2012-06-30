@@ -1,7 +1,7 @@
 {
   "name": "sweeten-docco",
   "description": "Sweeten docco output with syntax highlighted JSDoc & Codo tags",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Tyler Florez <qualiabyte@gmail.com>",
   "dependencies": {},
   "devDependencies": {
