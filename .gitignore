@@ -1,6 +1,9 @@
 # Node Modules
 node_modules
 
+# Readme Image
+sweeten-docco.png
+
 # Vim Swapfiles
 *.swp
 
