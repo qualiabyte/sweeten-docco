@@ -1,14 +1,12 @@
-# Sweeten docco output with syntax-highlighted JSDoc tags.
+# Sweeten-Docco
+Sweeten docco output with syntax-highlighted JSDoc & Codo tags.
 
-<a href="https://github.com/downloads/qualiabyte/sweeten-docco/sweeten-docco.png">
+<a href="https://github.com/qualiabyte/sweeten-docco/blob/master/test/fixtures/ocean.jsdoc.coffee">
   <img src="https://github.com/downloads/qualiabyte/sweeten-docco/sweeten-docco.png" style="max-width: 100%; margin: 20px; box-shadow: 0 0 20px #ccc;">
 </a>
 
-## Try Sweeten-Docco if you...
-
-1. Like docco for its Literate Programming style.
-2. Like doc-tags for specifying details (param types, return values, api status, etc).
-3. Want to combine these documentation styles!
+Check out the [coffeescript](https://github.com/qualiabyte/sweeten-docco/blob/master/test/fixtures/ocean.jsdoc.coffee)
+for the above sample, also used by our test suite.
 
 ## Features
 
@@ -16,13 +14,14 @@
 * Supports JSDoc & Codo param styles (@param {Type} name desc, @param [Type] name desc).
 * Automatically adds linebreaks between tag statements (no need to append spaces for Markdown!).
 
+## Try Sweeten-Docco if you...
+
+1. Like docco's style of Literate Programming.
+2. Like doc-tags for specifying details (param types, return values, api status, etc).
+3. Want to combine these documentation styles!
+
 [JSDocTags]: http://code.google.com/p/jsdoc-toolkit/wiki/TagReference
 [Codo]: https://github.com/netzpirat/codo
-
-## Examples
-
-Check out the [coffeescript](https://github.com/qualiabyte/sweeten-docco/blob/master/test/fixtures/ocean.jsdoc.coffee)
-for the above sample, also used by our test suite.
 
 ## Installing
 
