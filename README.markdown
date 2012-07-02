@@ -28,7 +28,9 @@ for the above sample, also used by our test suite.
 Just add sweeten-docco to your project. With curl:
 
 <pre>
+  $ mkdir bin
   $ curl https://github.com/qualiabyte/sweeten-docco/raw/master/sweeten-docco > bin/sweeten-docco
+  $ chmod a+x bin/sweeten-docco
 </pre>
 
 Or npm:
@@ -36,6 +38,9 @@ Or npm:
 <pre>
   $ npm install sweeten-docco
 </pre>
+
+Npm is recommended for easy updates with `npm update sweeten-docco`.  
+A global install is also possible with `npm install -g sweeten-docco`, for convenient command-line use.
 
 ## Usage
 
