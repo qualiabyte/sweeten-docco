@@ -99,5 +99,22 @@ test 'JSDoc', (done) ->
         assert.ok stdout.match /<div class="doc-tag"><b>return<\/b> <i>Ocean<\/i> For chaining./
         done()
 
+test 'Codo', (done) ->
+  exec "./node_modules/docco/bin/docco test/fixtures/mock_api.codo.coffee", (err, stdout, stderr) ->
+    assert.equal err, null, "docco should run successfully"
+
+    exec "./sweeten-docco", (err, stdout, stderr) ->
+      assert.equal err, null, "sweeten-docco should run successfully"
+      assert.equal stdout, "Sweetening docco... Done.\n"
+
+      exec "cat docs/mock_api.codo.html", (err, stdout, stderr) ->
+        assert.equal err, null, "cat should run successfully"
+        assert.ok stdout.match /<div class="doc-tag"><b>api<\/b> public<\/div>/
+        assert.ok stdout.match /<div class="doc-tag"><b>version<\/b> 1.0.0<\/div>/
+        assert.ok stdout.match /# A new api instance with @api and @version properties/
+        assert.ok stdout.match /(@api, @version)/
+        assert.ok stdout.match /Api: .*@api.*, version.*@version/
+        done()
+
 # Let's do this!
 runTests()
