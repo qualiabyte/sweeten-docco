@@ -11,8 +11,10 @@ for the above sample, also used by our test suite.
 ## Features
 
 * Detects [JSDoc][JSDocTags] & [Codo][Codo] tag names (plus a bonus 'api' tag).
-* Supports JSDoc & Codo param styles (@param {Type} name desc, @param [Type] name desc).
+* Supports JSDoc & Codo param styles (`@param {Type} name desc` or `@param [Type] name desc`).
+* Lists param names before types in output for convenience (but allows either style in the source).
 * Automatically adds linebreaks between tag statements (no need to append spaces for Markdown!).
+* Tested on Linux and Mac OS X.
 
 ## Try Sweeten-Docco if you...
 
