@@ -16,12 +16,13 @@ for the above sample, also used by our test suite.
 
 ## Try Sweeten-Docco if you...
 
-1. Like docco's style of Literate Programming.
+1. Like [docco's][Docco] style of Literate Programming.
 2. Like doc-tags for specifying details (param types, return values, api status, etc).
 3. Want to combine these documentation styles!
 
 [JSDocTags]: http://code.google.com/p/jsdoc-toolkit/wiki/TagReference
 [Codo]: https://github.com/netzpirat/codo
+[Docco]: http://jashkenas.github.com/docco/
 
 ## Installing
 
