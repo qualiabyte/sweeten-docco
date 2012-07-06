@@ -29,7 +29,7 @@ Just add sweeten-docco to your project. With curl:
 
 <pre>
   $ mkdir bin
-  $ curl https://github.com/qualiabyte/sweeten-docco/raw/master/sweeten-docco > bin/sweeten-docco
+  $ curl -L https://github.com/qualiabyte/sweeten-docco/raw/master/sweeten-docco > bin/sweeten-docco
   $ chmod a+x bin/sweeten-docco
 </pre>
 
