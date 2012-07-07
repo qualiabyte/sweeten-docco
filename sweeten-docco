@@ -48,7 +48,7 @@ if [[ -e 'docs' ]]; then
   # Param pattern helpers
   paramTypeBegin='[[{]'
   paramTypeEnd='[]}]'
-  paramNameTokens='(,[[:space:]]+|[^[:space:]])+'
+  paramNameTokens='(,[[:space:]]+|[^[:space:]<])+'
 
   # Ensure the param name is listed before the type;
   # wrap param name with <code>, param type with <i>, and tag names with <b>
