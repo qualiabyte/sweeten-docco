@@ -116,5 +116,19 @@ test 'Codo', (done) ->
         assert.ok stdout.match /Api: .*@api.*, version.*@version/
         done()
 
+test 'Syntax', (done) ->
+  exec "./node_modules/docco/bin/docco test/fixtures/syntax.coffee", (err, stdout, stderr) ->
+    assert.equal err, null, "docco should run successfully"
+
+    exec "./sweeten-docco", (err, stdout, stderr) ->
+      assert.equal err, null, "sweeten-docco should run successfully"
+      assert.equal stdout, "Sweetening docco... Done.\n"
+
+      exec "cat docs/syntax.html", (err, stdout, stderr) ->
+        assert.equal err, null, "cat should run successfully"
+        assert.ok ~stdout.indexOf('<div class="doc-tag"><b>param</b> <code>foo</code> <i>Array&lt;Foo&gt;</i> The foo array.</div>'), 'check Array<Type> syntax'
+        assert.ok ~stdout.indexOf('<div class="doc-tag"><b>param</b> <code>bar</code> <i>Bar[]</i> The bar array.</div>'), 'check Array<Type> syntax'
+        done()
+
 # Let's do this!
 runTests()
