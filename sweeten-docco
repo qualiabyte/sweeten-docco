@@ -42,19 +42,28 @@ if [[ -e 'docs' ]]; then
   # Sed range to match within paragraph tags
   inParagraph='/<p>/,/<\/p>/'
 
+  # HTML-escape angle brackets in tag statements
+  $SED $inParagraph' {
+    /<div class="doc-tag">/ b     # Skip if processed already
+    /@('$anyTag')/ s/</\&lt;/g    # These document typed arrays
+    /@('$anyTag')/ s/>/\&gt;/g
+  }' *.html
+
   # Wrap each doc tag statement
-  $SED $inParagraph' s/(@('$anyTag')[^<]*)/<div class="doc-tag">\1<\/div>/' *.html
+  $SED $inParagraph' s/(@('$anyTag').*)/<div class="doc-tag">\1<\/div>/' *.html
 
   # Param pattern helpers
   paramTypeBegin='[[{]'
   paramTypeEnd='[]}]'
+  paramTypeTokens='[^[:space:]]+'
+  paramType="${paramTypeBegin}${paramTypeTokens}${paramTypeEnd}"
   paramNameTokens='(,[[:space:]]+|[^[:space:]<])+'
 
   # Ensure the param name is listed before the type;
   # wrap param name with <code>, param type with <i>, and tag names with <b>
-  $SED $inParagraph' s/(@param) +('$paramTypeBegin'[^]}]+'$paramTypeEnd') +('$paramNameTokens')/\1 \3 \2/' *.html
+  $SED $inParagraph' s/(@param) +('$paramType') +('$paramNameTokens')/\1 \3 \2/' *.html
   $SED $inParagraph' s/(@param) +('$paramNameTokens')/\1 <code>\2<\/code>/' *.html
-  $SED $inParagraph' s/(@param|@return) ([^[{]*)'$paramTypeBegin'(.+)'$paramTypeEnd'/\1 \2<i>\3<\/i>/' *.html
+  $SED $inParagraph' s/(@param|@return) ([^[{]*)'"$paramTypeBegin($paramTypeTokens)$paramTypeEnd"'/\1 \2<i>\3<\/i>/' *.html
   $SED $inParagraph' s/@('$anyTag')/<b>\1<\/b>/' *.html
 
   # Delete the sed backups
