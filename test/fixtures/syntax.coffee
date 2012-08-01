@@ -1,7 +1,11 @@
 
+#
 # Syntax demonstrates supported doc-tag syntax variants.
-
+# @property [String] VERSION The module version.
+#
 class Syntax
+
+  @VERSION: '1.0.0'
 
   # Typed Arrays
   # ------------

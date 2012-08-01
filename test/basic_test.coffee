@@ -126,6 +126,7 @@ test 'Syntax', (done) ->
 
       exec "cat docs/syntax.html", (err, stdout, stderr) ->
         assert.equal err, null, "cat should run successfully"
+        assert.ok ~stdout.indexOf('<div class="doc-tag"><b>property</b> <code>VERSION</code> <i>String</i> The module version.</div>'), 'check property tag syntax'
         assert.ok ~stdout.indexOf('<div class="doc-tag"><b>param</b> <code>foo</code> <i>Array&lt;Foo&gt;</i> The foo array.</div>'), 'check Array<Type> syntax'
         assert.ok ~stdout.indexOf('<div class="doc-tag"><b>param</b> <code>bar</code> <i>Bar[]</i> The bar array.</div>'), 'check Array<Type> syntax'
         done()
